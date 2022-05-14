@@ -13,7 +13,7 @@ var callCity = function (city) {
     })
         .then(function (data) {
 
-            console.log(data);
+            //console.log(data);
 
             $("#city-name").text(data.name);
 
@@ -41,7 +41,7 @@ var callForecast = function (lat, lon) {
         return response.json();
     })
         .then(function (data) {
-            console.log(data);
+            //console.log(data);
             populateForecast(data);
         })
         .catch(function (error) {
@@ -81,3 +81,8 @@ var populateForecast = function (data) {
 };
 
 callCity("toronto");
+
+$("#search-city").click(function(){
+    //console.log($("#search-input").val());
+    callCity($("#search-input").val());
+});
