@@ -17,13 +17,13 @@ var callCity = function (city) {
 
             $("#city-name").text(data.name);
 
-            var search = {
-                location: city,
-                lon: data.coord.lon,
-                lat: data.coord.lat
-            };
+            if (data.name) {
+                searchHistory.push(data.name);
+                saveHistory();
+            }
 
-            searchHistory.push(search);
+            populateHistory();
+
             callForecast(data.coord.lat, data.coord.lon);
         })
         .catch(function (error) {
@@ -45,7 +45,7 @@ var callForecast = function (lat, lon) {
             populateForecast(data);
         })
         .catch(function (error) {
-            alert("City not found");
+            alert("Fetch Error");
         });
 
 };
@@ -93,9 +93,49 @@ var populateForecast = function (data) {
     }
 };
 
-callCity("toronto");
+// search history button population
+var populateHistory = function () {
+    $("#search-history").empty();
 
+    // makes a button for each history item
+    for (x = 0; x < searchHistory.length; x++) {
+        var searchItem = $("<button>")
+            .text(searchHistory[x])
+            .attr("data-index", x)
+            .addClass("col");
+
+        $("#search-history").append(searchItem);
+    }
+
+};
+
+// save and load functions
+var saveHistory = function () {
+    localStorage.setItem("searches", JSON.stringify(searchHistory));
+};
+
+var loadHistory = function () {
+    searchHistory = JSON.parse(localStorage.getItem("searches"));
+
+    if (!searchHistory) {
+        searchHistory = [];
+    }
+};
+
+
+loadHistory();
+populateHistory();
+
+// event listeners
 $("#search-city").click(function () {
-    //console.log($("#search-input").val());
+    $("#forecast").removeAttr("hidden");
+    console.log($("#search-input").val());
     callCity($("#search-input").val());
 });
+
+$("#search-history").on("click", "button", function () {
+    //console.log($(this).text());
+    $("#forecast").removeAttr("hidden");
+    callCity($(this).text());
+});
+
