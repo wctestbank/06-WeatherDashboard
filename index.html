@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +9,79 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-<body>
-    <header></header>
 
-    <main></main>
+<body class="container-fluid">
+    <header class="col-12 bg-dark text-light">
+        <h1 class="text-center">Weather Dashboard</h1>
+    </header>
+
+    <main class="row">
+        <!-- Search Sidebar -->
+        <div class="col-3">
+            <h2>Search for a City:</h2>
+            <input type="text" id="search" class="form-control" />
+            <button class="btn btn-primary" type="button">Search</button>
+            <span id="search-history"></span>
+        </div>
+
+        <div class="col-9">
+            <!-- Current weather -->
+
+            <h3 class="subtitle" id="city-name">Placeholder City</h3>
+            <p id="0-date"></p>
+            <img id="0-icon" src="" alt="weather icon" />
+            <p id="0-temp">Temp:</p>
+            <p id="0-wind">Wind:</p>
+            <p id="0-humidity">Humidity</p>
+            <p id="0-uv">UV:</p>
+
+
+            <!-- Future Weather -->
+
+            <h3>5-Day Forecast</h3>
+            <p id="1-date"></p>
+            <img id="1-icon" src="" alt="weather icon" />
+            <p id="1-temp">Temp:</p>
+            <p id="1-wind">Wind:</p>
+            <p id="1-humidity">Humidity</p>
+            <p id="1-uv">UV:</p>
+
+            <p id="2-date"></p>
+            <img id="2-icon" src="" alt="weather icon" />
+            <p id="2-temp">Temp:</p>
+            <p id="2-wind">Wind:</p>
+            <p id="2-humidity">Humidity</p>
+            <p id="2-uv">UV:</p>
+
+            <p id="3-date"></p>
+            <img id="3-icon" src="" alt="weather icon" />
+            <p id="3-temp">Temp:</p>
+            <p id="3-wind">Wind:</p>
+            <p id="3-humidity">Humidity</p>
+            <p id="3-uv">UV:</p>
+
+            <p id="4-date"></p>
+            <img id="4-icon" src="" alt="weather icon" />
+            <p id="4-temp">Temp:</p>
+            <p id="4-wind">Wind:</p>
+            <p id="4-humidity">Humidity</p>
+            <p id="4-uv">UV:</p>
+
+            <p id="4-date"></p>
+            <img id="5-icon" src="" alt="weather icon" />
+            <p id="4-temp">Temp:</p>
+            <p id="4-wind">Wind:</p>
+            <p id="4-humidity">Humidity</p>
+            <p id="4-uv">UV:</p>
+
+
+
+
+        </div>
+
+    </main>
 
     <footer></footer>
 
@@ -21,4 +89,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
