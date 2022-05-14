@@ -77,12 +77,25 @@ var populateForecast = function (data) {
         // uv
         var uvi = data.daily[x].uvi;
         $(`#${x}-uv`).text(`UV: ${uvi}`);
+
+        // assigns class to color code uv conditions
+        $(`#${x}-uv`).removeClass();
+        switch (true) {
+            case (uvi > 6):
+                $(`#${x}-uv`).addClass("bg-danger");
+                break;
+            case (uvi > 3):
+                $(`#${x}-uv`).addClass("bg-warning");
+                break;
+            default:
+                $(`#${x}-uv`).addClass("bg-success");
+        }
     }
 };
 
 callCity("toronto");
 
-$("#search-city").click(function(){
+$("#search-city").click(function () {
     //console.log($("#search-input").val());
     callCity($("#search-input").val());
 });
